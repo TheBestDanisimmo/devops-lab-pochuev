@@ -14,8 +14,8 @@ Date of finished: 06.10.2025
 3. Создан репозиторий
 4. В веб-интерфейсе GitHub создан новый репозиторий с названием devops-lab-pochuev.
 5. Клонирован репозитория на локальную машину 
-6. Создан Файл README.md 1. add README ![alt text](image-3.png)
+6. Создан Файл README.md ![alt text](image-4.png)
 7. Добавлен .gitignore с типовыми исключениями для ОС (Windows/Linux).
-8. Создана новая ветка develop ![alt text](image.png)
-9. Создан файл с правилами участия в проекте ![alt text](image-2.png)
+8. Создана новая ветка develop ![alt text](image-6.png)
+9. Создан файл с правилами участия в проекте ![alt text](image-5.png)
 
