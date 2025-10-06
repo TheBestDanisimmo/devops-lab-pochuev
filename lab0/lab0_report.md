@@ -1,7 +1,7 @@
-University: ITMO University  
-Faculty: FTMI  
-Course: Introduction in web tech  
-Year: 2025  
+University: [ITMO University](https://itmo.ru/ru/)  
+Faculty: [FICT](https://fict.itmo.ru)  
+Course: [Введение в веб технологии](https://itmo-ict-faculty.github.io/introduction-in-web-tech/)  
+Year: 2025/2026  
 Group: U4225  
 Author: Pochuev Danil Valerevich  
 Lab: Lab0  
