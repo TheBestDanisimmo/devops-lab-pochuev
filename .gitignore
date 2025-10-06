@@ -1,0 +1,77 @@
+# ОС Windows
+# Игнорировать временные файлы Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Игнорировать файлы кэша и дампы памяти
+*.stackdump
+
+# Игнорировать папки и файлы сборки
+[Bb]uild/
+[Ll]og/
+
+# Игнорировать резервные копии
+*~
+
+# ОС Linux
+# Игнорировать скрытые файлы (кроме .gitignore и .git)
+.*
+!.gitignore
+
+# Но разрешить некоторые важные скрытые файлы
+!.*/
+!.editorconfig
+
+# Игнорировать временные файлы
+*~
+*.swp
+*.swo
+
+# Общие исключения для разработки
+# Игнорировать папки зависимостей
+node_modules/
+vendor/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+
+# Игнорировать файлы IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Игнорировать логи
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Игнорировать файлы сборки
+/dist/
+/build/
+*.tgz
+*.tar.gz
+
+# Игнорировать системные файлы
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Игнорировать файлы окружения
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
