@@ -4,7 +4,7 @@ Course: [Введение в веб технологии](https://itmo-ict-facul
 Year: 2025/2026  
 Group: U4225  
 Author: Pochuev Danil Valerevich  
-Lab: Lab0  
+Lab: Lab1  
 Date of create: 07.10.2025  
 Date of finished: 07.10.2025
 
