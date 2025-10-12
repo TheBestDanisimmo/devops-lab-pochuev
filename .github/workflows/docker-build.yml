@@ -27,14 +27,13 @@ jobs:
       - name: Build and push image
         uses: docker/build-push-action@v6
         with:
-          context: ./repo_lab2
-          file: ./repo_lab2/Dockerfile
+          context: .          # ← ИЗМЕНИЛОСЬ
+          file: ./Dockerfile  # ← ИЗМЕНИЛОСЬ
           push: true
           platforms: linux/amd64
           tags: |
             juliadv8/repo_lab2:latest
             juliadv8/repo_lab2:${{ github.ref_name }}
-
 
       - name: Deploy (production)
         if: github.ref == 'refs/heads/main'
