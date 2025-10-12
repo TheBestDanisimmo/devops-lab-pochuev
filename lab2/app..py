@@ -6,5 +6,5 @@ def hello():
    return "Hello from Docker!"
 
 if __name__ == '__main__':
-   # 0.0.0.0 делает приложение доступным вне контейнера
+   
    app.run(host='0.0.0.0', port=5000)
