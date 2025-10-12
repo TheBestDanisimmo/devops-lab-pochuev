@@ -1,39 +1,45 @@
-name: Docker Build and Push
+name: CI/CD for Docker app
 
 on:
   push:
-    branches: [ main ]
-
+    branches: 
+    - main
+    - develop
+env:
+  IMAGE_NAME: lab2 
+  
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-    
+
     steps:
-    # Шаг 1: Checkout кода
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    # Шаг 2: Настройка Docker Buildx
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
 
-    # Шаг 3: Логин в Docker Hub
-    - name: Login to Docker Hub
-      uses: docker/login-action@v3
-      with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
-    # Шаг 4: Сборка и пушинг образа
-    - name: Build and push Docker image
-      uses: docker/build-push-action@v5
-      with:
-        context: .
-        file: ./Dockerfile
-        push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/my-flask-app:latest
+      - name: Build and push image
+        uses: docker/build-push-action@v6
+        with:
+          context: ./repo_lab2
+          file: ./repo_lab2/Dockerfile
+          push: true
+          platforms: linux/amd64
+          tags: |
+            juliadv8/repo_lab2:latest
+            juliadv8/repo_lab2:${{ github.ref_name }}
 
-    # Шаг 5: Деплой (заглушка)
-    - name: Deploy application
-      run: |
-        echo "🚀 Starting deployment process..."
+
+      - name: Deploy (production)
+        if: github.ref == 'refs/heads/main'
+        run: echo "Deploying to production server..."
+
+      - name: Deploy (development)
+        if: github.ref == 'refs/heads/develop'
+        run: echo "Deploying to development server..."
