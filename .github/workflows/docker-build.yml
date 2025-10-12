@@ -1,42 +1,42 @@
-name: CI/CD for Docker app
+name: Docker Build and Deploy
 
 on:
   push:
-    branches: 
-    - main
-    - develop
-  
+    branches:
+      - master
+      - develop
+    paths:
+      - 'lab2/**'
+
 jobs:
-  build-and-push:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Login to Docker Hub
-        uses: docker/login-action@v3
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build and push image
-        uses: docker/build-push-action@v6
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
         with:
-          context: ./lab2          # ← ИЗМЕНИТЬ НА lab2
-          file: ./lab2/Dockerfile  # ← ИЗМЕНИТЬ НА lab2/Dockerfile
+          context: ./lab2
+          file: ./lab2/Dockerfile
           push: true
-          platforms: linux/amd64
-          tags: |
-            juliadv8/repo_lab2:latest
-            juliadv8/repo_lab2:${{ github.ref_name }}
+          tags: ${{ secrets.DOCKER_USERNAME }}/my-flask-app:${{ github.ref_name }}
 
-      - name: Deploy (production)
-        if: github.ref == 'refs/heads/main'
-        run: echo "Deploying to production server..."
-
-      - name: Deploy (development)
+      - name: Deploy to Development
         if: github.ref == 'refs/heads/develop'
         run: echo "Deploying to development server..."
+
+      - name: Deploy to Production
+        if: github.ref == 'refs/heads/main'
+        run: echo "Deploying to production server..."
