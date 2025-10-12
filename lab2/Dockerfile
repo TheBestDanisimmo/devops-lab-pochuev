@@ -2,18 +2,18 @@ FROM python:3.9-slim
 
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
     curl \
     vim
 
-COPY requirements.txt .
+COPY . .
+
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY app.py .
+RUN useradd -u 1000 flaskuser
 
-RUN useradd -u 1000 appuser
-
-USER appuser
+USER flaskuser
 
 EXPOSE 5000
 
