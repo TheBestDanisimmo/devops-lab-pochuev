@@ -6,7 +6,7 @@ on:
     - main
     - develop
 env:
-  IMAGE_NAME: lab2 
+  IMAGE_NAME: repo_lab2
   
 jobs:
   build-and-push:
@@ -27,8 +27,8 @@ jobs:
       - name: Build and push image
         uses: docker/build-push-action@v6
         with:
-          context: ./Lab2
-          file: ./Lab2/Dockerfile
+          context: ./repo_lab2
+          file: ./repo_lab2/Dockerfile
           push: true
           platforms: linux/amd64
           tags: |
@@ -38,8 +38,4 @@ jobs:
 
       - name: Deploy (production)
         if: github.ref == 'refs/heads/main'
-        run: echo "Deploying to production server..."
-
-      - name: Deploy (development)
-        if: github.ref == 'refs/heads/develop'
-        run: echo "Deploying to development serverrr"
+        run: echo "Deploying to production server"
