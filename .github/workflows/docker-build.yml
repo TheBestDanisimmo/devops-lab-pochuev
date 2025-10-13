@@ -1,19 +1,18 @@
-name: CI/CD (lab2 Docker)
+name: CI/CD Docker Build and Push
 
 on:
   push:
-    branches:
-      - main
-      - develop
+    branches: [ "main" ]
 
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-      - name: Set up Docker Buildx
+      - name: Setup Docker Buildx
         uses: docker/setup-buildx-action@v3
 
       - name: Login to Docker Hub
@@ -22,19 +21,14 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build & Push Docker image
-        uses: docker/build-push-action@v6
+      - name: Build and Push Docker Image
+        uses: docker/build-push-action@v5
         with:
           context: ./lab2
-          push: true
-          tags: |
-            danisimmmmo/devops-lab-pochuev_lab_2:latest
-            danisimmmmo/devops-lab-pochuev_lab_2:${{ github.ref_name }}
-
-      - name: Deploy (production)
-        if: github.ref == 'refs/heads/main'
-        run: echo "Deploying to production server..."
-
-      - name: Deploy (development)
-        if: github.ref == 'refs/heads/develop'
-        run: echo "Deploying to development server..."
+          push: true 
+          tags: danisimmmmo/my-flask-app:latest
+          
+      - name: Deployment Placeholder 
+        run: |
+          echo "CI/CD Pipeline Completed Successfully."
+          echo "Docker image danisimmmmo/my-flask-app:latest published and ready!"
