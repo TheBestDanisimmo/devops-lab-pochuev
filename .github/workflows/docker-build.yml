@@ -25,7 +25,7 @@ jobs:
       - name: Build & Push Docker image
         uses: docker/build-push-action@v6
         with:
-          context: ./lab2
+          context: ./
           push: true
           tags: |
             angelinadementeva/devops-lab-pochuev_lab_2:latest
