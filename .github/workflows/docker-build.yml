@@ -33,8 +33,8 @@ jobs:
 
       - name: Deploy (production)
         if: github.ref == 'refs/heads/main'
-        run: echo "Deploying to production server..."
+        run: echo "Deploying to production server"
 
       - name: Deploy (development)
         if: github.ref == 'refs/heads/develop'
-        run: echo "Deploying to development server..."
+        run: echo "Deploying to development server"
