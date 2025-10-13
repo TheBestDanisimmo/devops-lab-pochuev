@@ -28,8 +28,8 @@ jobs:
           context: ./lab2
           push: true
           tags: |
-            angelinadementeva/devops-lab-dementeva_lab_2:latest
-            angelinadementeva/devops-lab-dementeva_lab_2:${{ github.ref_name }}
+            angelinadementeva/devops-lab-pochuev_lab_2:latest
+            angelinadementeva/devops-lab-pochuev_lab_2:${{ github.ref_name }}
 
       - name: Deploy (production)
         if: github.ref == 'refs/heads/main'
