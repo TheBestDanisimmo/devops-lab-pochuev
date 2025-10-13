@@ -31,4 +31,4 @@ jobs:
       - name: Deployment Placeholder 
         run: |
           echo "CI/CD Pipeline Completed Successfully."
-          echo "Docker image danisimmmmo/my-flask-app:latest published and ready!"
+          echo "Docker image danisimmmmo/my-flask-app:latest published and ready!!"
