@@ -25,16 +25,16 @@ jobs:
       - name: Build & Push Docker image
         uses: docker/build-push-action@v6
         with:
-          context: ./
+          context: ./lab2
           push: true
           tags: |
-            angelinadementeva/devops-lab-pochuev_lab_2:latest
-            angelinadementeva/devops-lab-pochuev_lab_2:${{ github.ref_name }}
+            danisimmmmo/devops-lab-pochuev_lab_2:latest
+            danisimmmmo/devops-lab-pochuev_lab_2:${{ github.ref_name }}
 
       - name: Deploy (production)
         if: github.ref == 'refs/heads/main'
-        run: echo "Deploying to production server"
+        run: echo "Deploying to production server..."
 
       - name: Deploy (development)
         if: github.ref == 'refs/heads/develop'
-        run: echo "Deploying to development server"
+        run: echo "Deploying to development server..."
